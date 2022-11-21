@@ -1,4 +1,5 @@
 import express, { Application } from 'express';
+import bodyparser from 'body-parser';
 import LogParserRouter from './api/v1/Routers/logParser';
 const router = express.Router();
 
@@ -8,6 +9,7 @@ export default class App {
 
     constructor() {
         this.app = express();
+        this.app.use(bodyparser.urlencoded({ extended: false }));
         this.port = 3000;
         this.registerRoutes();
     }
