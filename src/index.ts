@@ -1,5 +1,6 @@
-import { app, port } from './app';
+import App from './app';
+let newApp = new App();
 
-app.listen(port, () => {
-    return console.log(`Express is listening at http://localhost:${port}`);
+newApp.getApp().listen(newApp.getPort(), () => {
+    return console.log(`Express is listening at http://localhost:${newApp.getPort()}`);
 });

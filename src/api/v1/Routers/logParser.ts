@@ -1,20 +1,20 @@
 import { Router } from "express";
+import LogParserController from "../Controllers/logParserController";
 
 export default class LogParserRouter {
-    v1router: Router;
+    private v1router: Router;
 
     constructor(expressRouter: Router) {
         this.v1router = expressRouter;
         this.createRoutes();
     }
 
-    getV1Router() {
+    public getV1Router() {
         return this.v1router;
     }
 
-    createRoutes() {
-        this.v1router.get("/log-parser", (req: any, res: any, next: any) => {
-            res.send({ message: 'No bb Found' });
-        });
+    private createRoutes() {
+        let controller = new LogParserController();
+        this.v1router.get("/log-parser", controller.parseLogs);
     }
 }
